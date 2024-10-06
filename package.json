@@ -1,8 +1,8 @@
 {
   "name": "heroicons-duggi",
-  "version": "2.1.5",
+  "version": "0.0.3",
   "license": "MIT",
-  "repository": "https://github.com/tailwindlabs/heroicons.git",
+  "repository": "https://github.com/duggi/heroicons-duggi",
   "files": [
     "16/",
     "20/",
