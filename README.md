@@ -1,8 +1,8 @@
 <p align="center">
   <a href="https://heroicons.com" target="_blank">
     <picture>
-      <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/tailwindlabs/heroicons/HEAD/.github/logo-dark.svg">
-      <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/tailwindlabs/heroicons/HEAD/.github/logo-light.svg">
+      <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/duggi/heroicons-duggi/HEAD/.github/logo-dark.svg">
+      <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/duggi/heroicons-duggi/HEAD/.github/logo-light.svg">
       <img alt="Heroicons" width="315" height="117" style="max-width: 100%" src="https://raw.githubusercontent.com/tailwindlabs/heroicons/HEAD/.github/logo-light.svg">
     </picture>
   </a>
