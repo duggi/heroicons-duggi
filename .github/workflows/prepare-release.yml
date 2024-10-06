@@ -3,7 +3,8 @@ name: Prepare Release
 on:
   workflow_dispatch:
   push:
-    branches: [foo]
+    tags:
+      - 'v*'
 
 env:
   CI: true
