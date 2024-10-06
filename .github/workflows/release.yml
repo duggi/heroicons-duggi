@@ -17,7 +17,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [18]
+        node-version: [20.x]
 
     steps:
       - uses: actions/checkout@v4
@@ -28,34 +28,9 @@ jobs:
           node-version: ${{ matrix.node-version }}
           registry-url: 'https://registry.npmjs.org'
 
-      - name: Use cached node_modules
-        id: cache
-        uses: actions/cache@v4
-        with:
-          path: node_modules
-          key: nodeModules-${{ hashFiles('**/package-lock.json') }}-${{ matrix.node-version }}
-          restore-keys: |
-            nodeModules-
-
-      - name: Install dependencies
-        if: steps.cache.outputs.cache-hit != 'true'
+      - run: npm ci
         run: npm install
-
-      - name: Calculate environment variables
-        run: |
-          echo "RELEASE_CHANNEL=$(npm run release-channel --silent)" >> $GITHUB_ENV
-
-      - name: Publish `heroicons-duggi`
-        run: npm publish --provenance --tag ${{ env.RELEASE_CHANNEL }}
+      - run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
-      - name: Publish `@heroicons-duggi/react`
-        run: npm publish ./react --provenance --tag ${{ env.RELEASE_CHANNEL }}
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-
-      - name: Publish `@heroicons-duggi/vue`
-        run: npm publish ./vue --provenance --tag ${{ env.RELEASE_CHANNEL }}
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
