@@ -30,7 +30,19 @@ jobs:
 
       - run: npm ci
       - run: npm install
-      - run: npm publish
+
+      - name: Publish `heroicons-duggi`
+        run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: Publish `@heroicons-duggi/react`
+        run: npm publish ./react
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: Publish `@heroicons-duggi/vue`
+        run: npm publish ./vue
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
