@@ -207,6 +207,7 @@ async function main(package) {
 
   await Promise.all([
     rimraf(`./${package}/16/solid/*`),
+    rimraf(`./${package}/16/outline/*`),
     rimraf(`./${package}/20/solid/*`),
     rimraf(`./${package}/24/outline/*`),
     rimraf(`./${package}/24/solid/*`),
@@ -215,6 +216,8 @@ async function main(package) {
   await Promise.all([
     buildIcons(package, '16/solid', 'cjs'),
     buildIcons(package, '16/solid', 'esm'),
+    buildIcons(package, '16/outline', 'cjs'),
+    buildIcons(package, '16/outline', 'esm'),
     buildIcons(package, '20/solid', 'cjs'),
     buildIcons(package, '20/solid', 'esm'),
     buildIcons(package, '24/outline', 'cjs'),
@@ -223,6 +226,8 @@ async function main(package) {
     buildIcons(package, '24/solid', 'esm'),
     ensureWriteJson(`./${package}/16/solid/esm/package.json`, esmPackageJson),
     ensureWriteJson(`./${package}/16/solid/package.json`, cjsPackageJson),
+    ensureWriteJson(`./${package}/16/outline/esm/package.json`, esmPackageJson),
+    ensureWriteJson(`./${package}/16/outline/package.json`, cjsPackageJson),
     ensureWriteJson(`./${package}/20/solid/esm/package.json`, esmPackageJson),
     ensureWriteJson(`./${package}/20/solid/package.json`, cjsPackageJson),
     ensureWriteJson(`./${package}/24/outline/esm/package.json`, esmPackageJson),
@@ -233,7 +238,7 @@ async function main(package) {
 
   let packageJson = JSON.parse(await fs.readFile(`./${package}/package.json`, 'utf8'))
 
-  packageJson.exports = await buildExports(['16/solid', '20/solid', '24/outline', '24/solid'])
+  packageJson.exports = await buildExports(['16/solid', '16/outline', '20/solid', '24/outline', '24/solid'])
 
   await ensureWriteJson(`./${package}/package.json`, packageJson)
 
