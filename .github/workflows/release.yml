@@ -37,12 +37,12 @@ jobs:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: Publish `@heroicons-duggi/react`
-        run: npm publish ./react
+        run: npm publish --access-public ./react
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: Publish `@heroicons-duggi/vue`
-        run: npm publish ./vue
+        run: npm publish --access-public ./vue
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
