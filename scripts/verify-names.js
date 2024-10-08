@@ -3,11 +3,13 @@ const path = require('path')
 const { deprecated } = require('./deprecated')
 
 const srcPaths = {
+  twentyfour_jk: path.resolve(__dirname, '../src/16/outline/'),
   sixteen_outline: path.resolve(__dirname, '../src/16/outline/'),
   sixteen_solid: path.resolve(__dirname, '../src/16/solid/'),
   mini: path.resolve(__dirname, '../src/20/solid/'),
-  solid: path.resolve(__dirname, '../src/24/solid/'),
+  outline: path.resolve(__dirname, '../src/24/jk/'),
   outline: path.resolve(__dirname, '../src/24/outline/'),
+  solid: path.resolve(__dirname, '../src/24/solid/'),
 }
 
 async function main() {

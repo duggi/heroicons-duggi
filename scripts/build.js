@@ -159,6 +159,9 @@ async function buildExports(styles) {
   pkg[`./package.json`] = { default: './package.json' }
 
   // Backwards compatibility with v1 imports (points to proxy that prints an error message):
+  pkg['./jk'] = { default: './jk/index.js' }
+  pkg['./jk/index'] = { default: './jk/index.js' }
+  pkg['./jk/index.js'] = { default: './jk/index.js' }
   pkg['./outline'] = { default: './outline/index.js' }
   pkg['./outline/index'] = { default: './outline/index.js' }
   pkg['./outline/index.js'] = { default: './outline/index.js' }
@@ -209,6 +212,7 @@ async function main(package) {
     rimraf(`./${package}/16/solid/*`),
     rimraf(`./${package}/16/outline/*`),
     rimraf(`./${package}/20/solid/*`),
+    rimraf(`./${package}/24/jk/*`),
     rimraf(`./${package}/24/outline/*`),
     rimraf(`./${package}/24/solid/*`),
   ])
@@ -220,6 +224,8 @@ async function main(package) {
     buildIcons(package, '16/outline', 'esm'),
     buildIcons(package, '20/solid', 'cjs'),
     buildIcons(package, '20/solid', 'esm'),
+    buildIcons(package, '24/jk', 'cjs'),
+    buildIcons(package, '24/jk', 'esm'),
     buildIcons(package, '24/outline', 'cjs'),
     buildIcons(package, '24/outline', 'esm'),
     buildIcons(package, '24/solid', 'cjs'),
@@ -238,7 +244,7 @@ async function main(package) {
 
   let packageJson = JSON.parse(await fs.readFile(`./${package}/package.json`, 'utf8'))
 
-  packageJson.exports = await buildExports(['16/solid', '16/outline', '20/solid', '24/outline', '24/solid'])
+  packageJson.exports = await buildExports(['16/solid', '16/outline', '20/solid', '24/jk', '24/outline', '24/solid'])
 
   await ensureWriteJson(`./${package}/package.json`, packageJson)
 

@@ -29,6 +29,15 @@
     "./package.json": {
       "default": "./package.json"
     },
+    "./jk": {
+      "default": "./jk/index.js"
+    },
+    "./jk/index": {
+      "default": "./jk/index.js"
+    },
+    "./jk/index.js": {
+      "default": "./jk/index.js"
+    },
     "./outline": {
       "default": "./outline/index.js"
     },
@@ -115,6 +124,29 @@
     "./20/solid/esm/*.js": {
       "types": "./20/solid/*.d.ts",
       "import": "./20/solid/esm/*.js"
+    },
+    "./24/jk": {
+      "types": "./24/jk/index.d.ts",
+      "import": "./24/jk/esm/index.js",
+      "require": "./24/jk/index.js"
+    },
+    "./24/jk/*": {
+      "types": "./24/jk/*.d.ts",
+      "import": "./24/jk/esm/*.js",
+      "require": "./24/jk/*.js"
+    },
+    "./24/jk/*.js": {
+      "types": "./24/jk/*.d.ts",
+      "import": "./24/jk/esm/*.js",
+      "require": "./24/jk/*.js"
+    },
+    "./24/jk/esm/*": {
+      "types": "./24/jk/*.d.ts",
+      "import": "./24/jk/esm/*.js"
+    },
+    "./24/jk/esm/*.js": {
+      "types": "./24/jk/*.d.ts",
+      "import": "./24/jk/esm/*.js"
     },
     "./24/outline": {
       "types": "./24/outline/index.d.ts",
